@@ -1,0 +1,6 @@
+pandas
+numpy
+pyarrow
+fastparquet
+tqdm
+qdrant-client

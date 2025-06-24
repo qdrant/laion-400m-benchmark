@@ -4,3 +4,4 @@ pyarrow
 fastparquet
 tqdm
 qdrant-client
+requests

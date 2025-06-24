@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 import tqdm
 
+import requests
+
 from qdrant_client import QdrantClient, models
 
 
@@ -82,6 +84,19 @@ def create_collection(force_recreate=False):
             m=6, # decrease M for lower memory usage
             on_disk=False
         ),
+    )
+
+    # Patch collection with requests
+    requests.patch(
+        f"{QDRANT_URL}/collections/{QDRANT_COLLECTION_NAME}",
+        json={
+            "quantization_config": {
+                "binary": {
+                    "always_ram": True,
+                    "query_encoding": "scalar8bits"
+                }
+            }
+        }
     )
 
 

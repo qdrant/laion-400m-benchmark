@@ -89,6 +89,7 @@ def create_collection(force_recreate=False):
     # Patch collection with requests
     requests.patch(
         f"{QDRANT_URL}/collections/{QDRANT_COLLECTION_NAME}",
+        headers={"api-key": QDRANT_API_KEY},
         json={
             "quantization_config": {
                 "binary": {
